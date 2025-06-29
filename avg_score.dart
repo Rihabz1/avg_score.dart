@@ -16,7 +16,12 @@ void main() {
     avg[name] = total / scores.length;
   }
 
-  avg.entries.toList()
-    ..sort((a, b) => b.value.compareTo(a.value))
-    ..forEach((entry) => print('"${entry.key}": ${entry.value},'));
+  List<MapEntry<String, double>> avgList = avg.entries.toList();
+  avgList.sort((a, b) => b.value.compareTo(a.value));
+
+  print("{");
+  for (var entry in avgList) {
+    print('  "${entry.key}": ${entry.value}');
+  }
+  print("}");
 }
